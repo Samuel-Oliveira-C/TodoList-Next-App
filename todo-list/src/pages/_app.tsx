@@ -1,6 +1,9 @@
+import { TodoList } from "@/components/TodoList";
 import "@/styles/globals.css";
 
 
 export default function App() {
-  return ;
+  return (
+    <TodoList />
+  )
 }
