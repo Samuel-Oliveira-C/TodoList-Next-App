@@ -40,3 +40,6 @@ const TodoList = () => {
 }
 
 export{TodoList}
+
+//Fazer o botão de remover
+//fazer o checkbox
