@@ -17,7 +17,13 @@ const TodoList = () => {
         const novoArray = list.filter((element,key) => key !== index ) 
         setList(novoArray);
     }
+    const handleToggleEvent  = (index:number) =>{
+        let cloneArray = [...list];
+        cloneArray[index].checked = !cloneArray[index].checked; //vai inverter de o valor boolean atual
+        setList(cloneArray)
+    }
 
+    //Render
     return(
         <section className="w-svw h-screen flex flex-col gap-7">
             <div className="flex justify-start items-center flex-col mt-7 gap-2">
@@ -37,7 +43,10 @@ const TodoList = () => {
                 <div></div>
                 <ol>
                     {list.map((element,index) => (
-                        <li key={index}>{element.label} - <button className="hover:underline" onClick={() => handleRemoveEvent(index)}>[ deletar ]</button></li>))}
+                        <li key={index} className="flex gap-2">
+                            <input type="checkbox" name="checked" id="checked" checked={element.checked} onClick={() => handleToggleEvent(index)}/>
+                            {element.label} - <button className="hover:underline" onClick={() => handleRemoveEvent(index)}>[ deletar ]</button>
+                        </li>))}
                 </ol>
             </div>
         </section>
@@ -46,5 +55,5 @@ const TodoList = () => {
 
 export{TodoList}
 
-//TODO Fazer o botão de remover
-//TODO fazer o checkbox
+//TODO Fazer Refatoração
+//TODO  Adicionar Responsividade(para celulares)
