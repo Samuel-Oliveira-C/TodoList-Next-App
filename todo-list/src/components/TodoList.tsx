@@ -9,8 +9,13 @@ const TodoList = () => {
     const [input,setInput] = useState("");
     const [list,setList] = useState<TodoItem[]>([]);
 
+    //events
     const handleAddEvent = () =>{
         setList([...list, {label:input, checked:false} ])
+    }
+    const handleRemoveEvent = (index:number) => {
+        const novoArray = list.filter((element,key) => key !== index ) 
+        setList(novoArray);
     }
 
     return(
@@ -31,8 +36,8 @@ const TodoList = () => {
             <div className="flex justify-start items-center flex-col">
                 <div></div>
                 <ol>
-                    {list.map(element => (
-                        <li>{element.label} - <button className="hover:underline">[ deletar ]</button></li>))}
+                    {list.map((element,index) => (
+                        <li key={index}>{element.label} - <button className="hover:underline" onClick={() => handleRemoveEvent(index)}>[ deletar ]</button></li>))}
                 </ol>
             </div>
         </section>
@@ -41,5 +46,5 @@ const TodoList = () => {
 
 export{TodoList}
 
-//Fazer o botão de remover
-//fazer o checkbox
+//TODO Fazer o botão de remover
+//TODO fazer o checkbox
