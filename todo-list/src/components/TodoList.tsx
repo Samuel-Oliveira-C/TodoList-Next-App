@@ -2,7 +2,7 @@ import { useState } from "react"
 
 type TodoItem ={
     label: string,
-    checked: false
+    checked: boolean
 }
 
 const TodoList = () => {
@@ -40,7 +40,7 @@ const TodoList = () => {
                 </div>
             </div>
             <div className="flex justify-start items-center flex-col">
-                <div></div>
+                <div>{list.length > 1? `você tem ${list.length} itens`: `você tem ${list.length} item`}</div>
                 <ol>
                     {list.map((element,index) => (
                         <li key={index} className="flex gap-2">
